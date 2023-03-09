@@ -18,7 +18,7 @@ const propTypes = {
 };
 
 const CategoryShortcutBar = props => (
-    <View style={[styles.pt2, styles.ph4, styles.flexRow]}>
+    <View style={[styles.pt2, styles.ph4, styles.flexRow, styles.emojiCategoryShortCutBar]}>
         {_.map(props.headerEmojis, (headerEmoji, i) => (
             <CategoryShortcutButton
                 icon={headerEmoji.icon}
