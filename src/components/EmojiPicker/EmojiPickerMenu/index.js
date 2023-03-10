@@ -433,6 +433,7 @@ class EmojiPickerMenu extends Component {
      */
     renderItem({item, index}) {
         const {code, header, types} = item;
+
         if (item.spacer) {
             return null;
         }
@@ -446,6 +447,10 @@ class EmojiPickerMenu extends Component {
                 </View>
             );
         }
+
+        // check if next row is a header
+        const emojiRow = Math.floor(index / CONST.EMOJI_NUM_PER_ROW);
+        const nextRowIsHeader = this.state.headerIndices.includes(emojiRow + 1);
 
         const emojiCode = types && types[this.props.preferredSkinTone]
             ? types[this.props.preferredSkinTone]
@@ -464,6 +469,7 @@ class EmojiPickerMenu extends Component {
                 emoji={emojiCode}
                 isHighlighted={index === this.state.highlightedIndex}
                 isUsingKeyboardMovement={this.state.isUsingKeyboardMovement}
+                nextRowIsHeader={nextRowIsHeader}
             />
         );
     }
@@ -526,10 +532,11 @@ class EmojiPickerMenu extends Component {
                               [this.state.filteredEmojis, this.state.highlightedIndex, this.props.preferredSkinTone]
                             }
                             stickyHeaderIndices={this.state.headerIndices}
-                            onScroll={e => this.currentScrollOffset = e.nativeEvent.contentOffset.y}
+                            onScroll={e => this.currentScrollOffset = e.nativeEvent.contentOffset.y - 1}
                             getItemLayout={this.getItemLayout}
                         />
                     )}
+
                 <EmojiSkinToneList
                     updatePreferredSkinTone={this.updatePreferredSkinTone}
                     preferredSkinTone={this.props.preferredSkinTone}

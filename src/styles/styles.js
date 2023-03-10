@@ -1518,6 +1518,10 @@ const styles = {
         height: CONST.EMOJI_PICKER_ITEM_HEIGHT,
     },
 
+    emojiItemBottomRow: {
+        marginBottom: 2,
+    },
+
     emojiItemHighlighted: {
         transition: '0.2s ease',
         backgroundColor: themeColors.buttonDefaultBG,

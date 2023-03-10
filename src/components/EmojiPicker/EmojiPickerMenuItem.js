@@ -24,6 +24,9 @@ const propTypes = {
 
     /** Whether the emoji is highlighted by the keyboard/mouse */
     isUsingKeyboardMovement: PropTypes.bool,
+
+    /** Wether the row following this emoji is a header */
+    nextRowIsHeader: PropTypes.bool,
 };
 
 const EmojiPickerMenuItem = props => (
@@ -38,6 +41,7 @@ const EmojiPickerMenuItem = props => (
             props.isHighlighted && props.isUsingKeyboardMovement ? styles.emojiItemKeyboardHighlighted : {},
             props.isHighlighted && !props.isUsingKeyboardMovement ? styles.emojiItemHighlighted : {},
             styles.emojiItem,
+            props.nextRowIsHeader ? styles.emojiItemBottomRow : {},
         ])}
     >
         <Text style={[styles.emojiText]}>
@@ -53,6 +57,7 @@ EmojiPickerMenuItem.defaultProps = {
     isUsingKeyboardMovement: false,
     onHoverIn: () => {},
     onHoverOut: () => {},
+    nextRowIsHeader: false,
 };
 
 // Significantly speeds up re-renders of the EmojiPickerMenu's FlatList

@@ -2,5 +2,5 @@
 // https://github.com/Expensify/App/issues/15282
 // https://bugs.chromium.org/p/chromium/issues/detail?id=734461
 export default {
-    top: -1,
+    top: -2,
 };
